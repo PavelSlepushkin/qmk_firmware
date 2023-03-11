@@ -86,6 +86,9 @@ void lpm_task(void) {
 #ifdef RGB_MATRIX_ENABLE
         && rgb_matrix_is_driver_shutdown()
 #endif
+#if CAPS_WORD_IDLE_TIMEOUT > 0
+        && !is_caps_word_on()
+#endif
         && !lpm_any_matrix_action() && !battery_power_on_sample())
 
         enter_power_mode(LOW_POWER_MODE);
